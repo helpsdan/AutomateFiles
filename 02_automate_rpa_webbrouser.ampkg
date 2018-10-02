@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<PackageConstruct1100 xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ID>{fa0b4910-1d12-47f0-8e18-63ed262a7ada}</ID>
+  <ParentID />
+  <Name />
+  <Type>Package</Type>
+  <Path />
+  <Tasks>
+    <anyType xsi:type="TaskConstruct">
+      <ID>{eee70fe3-e993-4256-8b4d-30621fef1719}</ID>
+      <ParentID>{E893A7FD-2758-4315-9181-93F8728332E5}</ParentID>
+      <Name>02_automate_rpa_webbrouser</Name>
+      <Type>Task</Type>
+      <Path />
+      <StartedOn>1900-01-01T00:00:00Z</StartedOn>
+      <EndedOn>1900-01-01T00:00:00Z</EndedOn>
+      <ResultCode>0</ResultCode>
+      <ResultText />
+      <VersionDate>2018-10-02T20:12:23.003Z</VersionDate>
+      <Version>7</Version>
+      <ModifiedOn>2018-10-02T20:12:22.997Z</ModifiedOn>
+      <CreatedOn>2018-10-02T17:03:33.22Z</CreatedOn>
+      <Notes />
+      <CreatedBy>{6AD627E8-373B-4104-81B7-9670A9D2F430}</CreatedBy>
+      <CompletionState>Production</CompletionState>
+      <ExclusionSchedules />
+      <Empty>false</Empty>
+      <Enabled>true</Enabled>
+      <Removed>false</Removed>
+      <LockedBy />
+      <AML>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;AutoMateTask&gt;
+  &lt;TaskInfo&gt;
+    &lt;Version TaskVersion="11.1.1.1" MinVersion="0.0.0.0" AMLVersion="3.0" /&gt;
+  &lt;/TaskInfo&gt;
+  &lt;TaskFunctions&gt;
+    &lt;TaskFunction Name="OnStepStart" Access="private"&gt;
+      &lt;Parameters&gt;
+        &lt;Parameter Name="FunctionName" Description="The function that is starting the step" /&gt;
+        &lt;Parameter Name="StepNumber" Description="The step number that is about to execute" /&gt;
+      &lt;/Parameters&gt;
+    &lt;/TaskFunction&gt;
+    &lt;TaskFunction Name="OnStepEnd" Access="private"&gt;
+      &lt;Parameters&gt;
+        &lt;Parameter Name="FunctionName" Description="The function that is ending the step" /&gt;
+        &lt;Parameter Name="StepNumber" Description="The step number that is about to end" /&gt;
+      &lt;/Parameters&gt;
+    &lt;/TaskFunction&gt;
+    &lt;TaskFunction Name="OnStepError" Access="private"&gt;
+      &lt;Parameters&gt;
+        &lt;Parameter Name="FunctionName" Description="The function with the error" /&gt;
+        &lt;Parameter Name="StepNumber" Description="The step number of the error" /&gt;
+        &lt;Parameter Name="ErrorText" Description="The text of the error" /&gt;
+        &lt;Parameter Name="ErrorCode" Description="The code of the error" /&gt;
+      &lt;/Parameters&gt;
+    &lt;/TaskFunction&gt;
+    &lt;TaskFunction Name="OnTaskFailure" Access="private"&gt;
+      &lt;Parameters&gt;
+        &lt;Parameter Name="FunctionName" Description="The function causing the task failure" /&gt;
+        &lt;Parameter Name="StepNumber" Description="The step number causing the task failure" /&gt;
+        &lt;Parameter Name="ErrorText" Description="The text of the error" /&gt;
+        &lt;Parameter Name="ErrorCode" Description="The code of the error" /&gt;
+      &lt;/Parameters&gt;
+    &lt;/TaskFunction&gt;
+    &lt;TaskFunction Name="OnTaskStart" Access="private"&gt;
+      &lt;Parameters&gt;
+        &lt;Parameter Name="Reason" Description="The reason the task is starting" /&gt;
+      &lt;/Parameters&gt;
+    &lt;/TaskFunction&gt;
+    &lt;TaskFunction Name="OnTaskEnd" Access="private"&gt;
+      &lt;Parameters&gt;
+        &lt;Parameter Name="Reason" Description="The reason the task is ending" /&gt;
+      &lt;/Parameters&gt;
+    &lt;/TaskFunction&gt;
+    &lt;TaskFunction Name="Main" Access="private"&gt;
+      &lt;Steps&gt;
+&lt;AMREGION NAME="navegacao" COLLAPSED="YES" /&gt;
+&lt;AMIF ACTIVITY="window_exists" WINDOWCLASS="IEFrame" /&gt;
+&lt;AMWINDOW ACTIVITY="close" AM_ONERROR="CONTINUE" WINDOWCLASS="IEFrame" /&gt;
+&lt;AMIF ACTIVITY="end" /&gt;
+&lt;AMVARIABLE NAME="vHandle" VALUE="valor inicial" /&gt;
+&lt;AMBROWSER URL="https://www.youtube.com/" SESSION="BrowserSession1" WINDOWHANDLEVARIABLE="vHandle" /&gt;
+&lt;AMWINDOW ACTIVITY="maximize" WINDOWHANDLE="%vHandle%" /&gt;
+&lt;AMWINDOW WINDOWHANDLE="%vHandle%" /&gt;
+&lt;AMBROWSER ACTIVITY="setvalue" HTMLID="masthead-search-term" SESSION="BrowserSession1" VALUE="cute bunny" ATTRIBUTE=":text" /&gt;
+&lt;AMBROWSER ACTIVITY="click" HTMLID="search-btn" SESSION="BrowserSession1" /&gt;
+&lt;AMENDREGION /&gt;
+&lt;AMBROWSER ACTIVITY="attach" SESSION="BrowserSession1" MATCHWINDOWURL="https://www.youtube.com/results?search_query=cute+bunny" AM_ENABLED="NO" /&gt;
+&lt;AMBROWSER ACTIVITY="state" SESSION="BrowserSession1" WAITTIME="2" /&gt;
+&lt;AMBROWSER ACTIVITY="getvalue" HTMLTAG="A" SESSION="BrowserSession1" RESULTDATASET="dataset001" ATTRIBUTE="href"&gt;&lt;HTMLATTRIBUTE NAME="className" VALUE="yt-uix-tile-link yt-ui-ellipsis yt-ui-ellipsis-2 yt-uix-sessionlink      spf-link " /&gt;&lt;/AMBROWSER&gt;
+&lt;AMLOOP ACTIVITY="dataset" DATASET="dataset001" AM_ENABLED="NO" /&gt;
+&lt;AMBROWSER ACTIVITY="navigate" SESSION="BrowserSession1" URL="%dataset001.Value%" AM_ENABLED="NO" /&gt;
+&lt;AMBROWSER ACTIVITY="state" SESSION="BrowserSession1" WAITTIME="2" AM_ENABLED="NO" /&gt;
+&lt;AMLOOP ACTIVITY="end" AM_ENABLED="NO" /&gt;
+&lt;AMFILESYSTEM ACTIVITY="dataset_to_csv" DESTINATION="C:\Users\Treinamento\Desktop\automatefiles\teste.csv" RESULTDATASET="dataset001" OVERWRITE="YES" /&gt;
+&lt;AMRUN FILE="C:\Users\Treinamento\Desktop\automatefiles\teste.csv" /&gt;
+	&lt;/Steps&gt;
+    &lt;/TaskFunction&gt;
+  &lt;/TaskFunctions&gt;
+&lt;/AutoMateTask&gt;</AML>
+    </anyType>
+  </Tasks>
+  <TaskProperties />
+  <Triggers />
+  <TriggerProperties />
+  <WorkFlows />
+  <WorkFlowProperties />
+  <Folders />
+  <ItemPermissions />
+  <Processes />
+  <WorkflowItemProperties />
+  <Exclusions />
+</PackageConstruct1100>
