@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <PackageConstruct1100 xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <ID>{612bd0f8-4fb6-4f30-b38f-0242d9de5846}</ID>
+  <ID>{d5fb28d2-8a9d-4fa0-9449-5dbc8db30cc7}</ID>
   <ParentID />
   <Name />
   <Type>Package</Type>
@@ -16,9 +16,9 @@
       <EndedOn>1900-01-01T00:00:00Z</EndedOn>
       <ResultCode>0</ResultCode>
       <ResultText />
-      <VersionDate>2018-10-02T20:12:15.097Z</VersionDate>
-      <Version>2</Version>
-      <ModifiedOn>2018-10-02T20:12:15.093Z</ModifiedOn>
+      <VersionDate>2018-10-03T19:49:58.713Z</VersionDate>
+      <Version>9</Version>
+      <ModifiedOn>2018-10-03T19:49:58.71Z</ModifiedOn>
       <CreatedOn>2018-10-02T19:26:06.307Z</CreatedOn>
       <Notes />
       <CreatedBy>{6AD627E8-373B-4104-81B7-9670A9D2F430}</CreatedBy>
@@ -74,23 +74,27 @@
     &lt;/TaskFunction&gt;
     &lt;TaskFunction Name="Main" Access="private"&gt;
       &lt;Steps&gt;
-&lt;AMREGION NAME="Validacao" COLLAPSED="YES" /&gt;
+&lt;AMREGION NAME="Close windows" /&gt;
 &lt;AMIF ACTIVITY="window_exists" WINDOWCLASS="IEFrame" /&gt;
 &lt;AMWINDOW ACTIVITY="close" WINDOWCLASS="IEFrame" /&gt;
 &lt;AMIF ACTIVITY="end" /&gt;
 &lt;AMENDREGION /&gt;
-&lt;AMREGION NAME="Search" COLLAPSED="YES" /&gt;
+&lt;AMREGION NAME="Search" /&gt;
 &lt;AMVARIABLE NAME="vHandle" VALUE="0" /&gt;
 &lt;AMBROWSER URL="https://www.google.com/" SESSION="BrowserSession1" WINDOWHANDLEVARIABLE="vHandle" /&gt;
 &lt;AMWINDOW ACTIVITY="maximize" WINDOWHANDLE="%vHandle%" /&gt;
 &lt;AMWINDOW WINDOWHANDLE="%vHandle%" /&gt;
+&lt;AMBROWSER ACTIVITY="state" SESSION="BrowserSession1" WAITTIME="2" /&gt;
+&lt;AMINPUT ACTIVITY="move_mouse" X="643" Y="426" RELATIVETO="screen" AM_ENABLED="NO" /&gt;
+&lt;AMINPUT ACTIVITY="click_mouse" AM_ENABLED="NO" /&gt;
 &lt;AMBROWSER ACTIVITY="setvalue" HTMLID="lst-ib" SESSION="BrowserSession1" VALUE="automate" ATTRIBUTE=":text" /&gt;
-&lt;AMBROWSER ACTIVITY="click" HTMLNAME="btnK" SESSION="BrowserSession1" /&gt;
+&lt;AMBROWSER ACTIVITY="state" SESSION="BrowserSession1" WAITTIME="2" /&gt;
+&lt;AMBROWSER ACTIVITY="click" HTMLID="lst-ib" SESSION="BrowserSession1" /&gt;
 &lt;AMIF ACTIVITY="last_step" /&gt;
 &lt;AMINPUT KEYSTROKES="{ENTER}" /&gt;
 &lt;AMIF ACTIVITY="end" /&gt;
 &lt;AMENDREGION /&gt;
-&lt;AMREGION NAME="Changes in Web Brouser" COLLAPSED="YES" /&gt;
+&lt;AMREGION NAME="Changes in Web Brouser" /&gt;
 &lt;AMBROWSER ACTIVITY="state" SESSION="BrowserSession1" WAITTIME="3" /&gt;
 &lt;AMBROWSER ACTIVITY="attach" SESSION="BrowserSession1" MATCHWINDOWURL="https://www.google.com/search?source=hp&amp;amp;ei=K8mzW_20N4yewgS9grLgBg&amp;amp;q=automate&amp;amp;oq=automate&amp;amp;gs_l=psy-ab.12..0j0i131k1j0l8.112.112.0.292.1.1.0.0.0.0.36.36.1.1.0....0...1c..64.psy-ab..0.1.34....0.2PaJEGEM-cw" AM_ENABLED="NO" /&gt;
 &lt;!--Tirando links ao lado--&gt;
@@ -100,8 +104,49 @@
 &lt;AMBROWSER ACTIVITY="attach" SESSION="BrowserSession1" MATCHWINDOWURL="https://www.google.com/search?source=hp&amp;amp;ei=Ts6zW_iVL8f4wATo1YuIDQ&amp;amp;q=automate&amp;amp;oq=automate&amp;amp;gs_l=psy-ab.3..0j0i131k1j0l8.866.866.0.978.1.1.0.0.0.0.79.79.1.1.0....0...1c..64.psy-ab..0.1.79....0.RCsao8dyEUM" AM_ENABLED="NO" /&gt;
 &lt;AMBROWSER ACTIVITY="getvalue" HTMLTAG="H3" SESSION="BrowserSession1" RESULTDATASET="datasetName" ATTRIBUTE=":text"&gt;&lt;HTMLATTRIBUTE NAME="className" VALUE="LC20lb" /&gt;&lt;/AMBROWSER&gt;
 &lt;AMENDREGION /&gt;
-&lt;AMBROWSER ACTIVITY="attach" SESSION="BrowserSession1" MATCHWINDOWURL="https://www.google.com/search?source=hp&amp;amp;ei=Ts6zW_iVL8f4wATo1YuIDQ&amp;amp;q=automate&amp;amp;oq=automate&amp;amp;gs_l=psy-ab.3..0j0i131k1j0l8.866.866.0.978.1.1.0.0.0.0.79.79.1.1.0....0...1c..64.psy-ab..0.1.79....0.RCsao8dyEUM" /&gt;
-&lt;AMBROWSER ACTIVITY="getvalue" HTMLTAG="A" SESSION="BrowserSession1" RESULTDATASET="datasetLink" ATTRIBUTE="href"&gt;&lt;HTMLATTRIBUTE NAME="className" /&gt;&lt;/AMBROWSER&gt;
+&lt;AMREGION NAME="Get link" /&gt;
+&lt;AMBROWSER ACTIVITY="attach" SESSION="BrowserSession1" MATCHWINDOWURL="https://www.google.com/search?source=hp&amp;amp;ei=Ts6zW_iVL8f4wATo1YuIDQ&amp;amp;q=automate&amp;amp;oq=automate&amp;amp;gs_l=psy-ab.3..0j0i131k1j0l8.866.866.0.978.1.1.0.0.0.0.79.79.1.1.0....0...1c..64.psy-ab..0.1.79....0.RCsao8dyEUM" AM_ENABLED="NO" /&gt;
+&lt;AMBROWSER ACTIVITY="getvalue" HTMLTAG="CITE" SESSION="BrowserSession1" RESULTDATASET="datasetLink" ATTRIBUTE=":text"&gt;&lt;HTMLATTRIBUTE NAME="className" VALUE="iUh30" /&gt;&lt;/AMBROWSER&gt;
+&lt;AMENDREGION /&gt;
+&lt;AMREGION NAME="Close Web Brouser" /&gt;
+&lt;AMIF ACTIVITY="window_exists" WINDOWHANDLE="%vHandle%" /&gt;
+&lt;AMWINDOW ACTIVITY="close" WINDOWHANDLE="%vHandle%" /&gt;
+&lt;AMIF ACTIVITY="end" /&gt;
+&lt;AMENDREGION /&gt;
+&lt;AMREGION NAME="Test DataSets" /&gt;
+&lt;AMBROWSER ACTIVITY="attach" SESSION="BrowserSession1" MATCHWINDOWURL="https://www.google.com/search?source=hp&amp;amp;ei=qO-0W-LoMISSwgTx-5SoDg&amp;amp;q=automate&amp;amp;oq=automate&amp;amp;gs_l=psy-ab.12..0j0i131k1l2j0l7.479.479.0.633.1.1.0.0.0.0.61.61.1.1.0....0...1c..64.psy-ab..0.1.60....0.R6Jmc9hf3U0" AM_ENABLED="NO" /&gt;
+&lt;AMVARIABLE NAME="vIndex" VALUE="" AM_ENABLED="NO" /&gt;
+&lt;AMLOOP FROM="1" TO="%datasetName.TotalRows%" RESULTVARIABLE="vIndex" AM_ENABLED="NO" /&gt;
+&lt;AMSHOWDIALOG AM_ENABLED="NO"&gt;&lt;![CDATA[%datasetLink(vIndex).value% || %datasetName(vIndex).value%]]&gt;&lt;/AMSHOWDIALOG&gt;
+&lt;AMLOOP ACTIVITY="end" AM_ENABLED="NO" /&gt;
+&lt;AMENDREGION /&gt;
+&lt;AMREGION NAME="Write title and links" /&gt;
+&lt;AMVARIABLE NAME="vNotepadHandle" VALUE="" /&gt;
+&lt;AMRUN FILE="notepad.exe" WINDOWHANDLEVARIABLE="vNotepadHandle" /&gt;
+&lt;AMWINDOW ACTIVITY="maximize" WINDOWHANDLE="%vNotepadHandle%" /&gt;
+&lt;AMWINDOW WINDOWHANDLE="%vNotepadHandle%" /&gt;
+&lt;AMVARIABLE NAME="vIndex" VALUE="" /&gt;
+&lt;AMLOOP AM_ONERROR="CONTINUE" FROM="1" TO="%datasetName.TotalRows%" RESULTVARIABLE="vIndex" /&gt;
+&lt;AMINPUT AM_ONERROR="CONTINUE" PREDELAY="0" DELAYBETWEENKEYS="1"&gt;%datasetName(vIndex).Value% {ENTER}- %datasetLink(vIndex).Value%{Enter}
+-----------------------------------------------{ENTER}{ENTER}&lt;/AMINPUT&gt;
+&lt;AMLOOP ACTIVITY="end" /&gt;
+&lt;AMENDREGION /&gt;
+&lt;AMREGION NAME="Save and close" /&gt;
+&lt;AMWINDOW ACTIVITY="close" WINDOWHANDLE="%vNotepadHandle%" /&gt;
+&lt;AMWAIT SCALAR="200" MEASURE="milliseconds" /&gt;
+ &lt;AMIF ACTIVITY="window_exists" WINDOWTITLE="Bloco de notas" CONTAINSOBJECT="YES" OBJECTPROPERTYSETS="Toolkit=WindowsAccessibility,Type=PushButton,Class=Button,Name=Salvar,Value=,X=,Y=" /&gt;
+&lt;AMINTERACT ACTIVITY="press" WINDOWTITLE="Bloco de notas" OBJECTPROPERTIES="Toolkit=WindowsAccessibility,Type=PushButton,Class=Button,Name=Salvar,Value=,X=,Y=" /&gt;
+&lt;AMIF ACTIVITY="end" /&gt;
+&lt;AMWAIT SCALAR="200" MEASURE="milliseconds" /&gt;
+ &lt;AMIF ACTIVITY="window_exists" WINDOWTITLE="Salvar como" /&gt;
+&lt;AMINTERACT ACTIVITY="set_text" WINDOWTITLE="Salvar como" OBJECTPROPERTIES="Toolkit=WindowsAccessibility,Type=SelectableText,Class=Edit,Name=Nome:,Value=*.txt,X=,Y=" TEXT="C:\Users\Trainning\Desktop\TESTE.txt" /&gt;
+&lt;AMIF ACTIVITY="end" /&gt;
+&lt;AMWAIT SCALAR="200" MEASURE="milliseconds" /&gt;
+&lt;AMINTERACT ACTIVITY="press" WINDOWTITLE="Salvar como" OBJECTPROPERTIES="Toolkit=WindowsAccessibility,Type=PushButton,Class=Button,Name=Salvar,Value=,X=,Y=" /&gt;
+ &lt;AMIF ACTIVITY="window_exists" WINDOWTITLE="Confirmar Salvar como" /&gt;
+&lt;AMINTERACT ACTIVITY="press" WINDOWTITLE="Confirmar Salvar como" OBJECTPROPERTIES="Toolkit=WindowsAccessibility,Type=PushButton,Class=Button,Name=Sim,Value=,X=,Y=" /&gt;
+&lt;AMIF ACTIVITY="end" /&gt;
+&lt;AMENDREGION /&gt;
 	&lt;/Steps&gt;
     &lt;/TaskFunction&gt;
   &lt;/TaskFunctions&gt;
